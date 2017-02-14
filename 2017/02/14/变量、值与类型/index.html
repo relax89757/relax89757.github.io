@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://relax89757.github.io/2017/02/14/变量、值与类型/index.html">
 <meta property="og:site_name" content="疯狂世界bolg">
 <meta property="og:description" content="JS类型js有七种数据类型，Undefined、Null、Boolean、String、Number、Symbols、Object.function也是一种可引用的Object。判断数据类型一般可用typeof，12345678typeof NaN; //&amp;quot;number&amp;quot;typeof Infinity;  //&amp;quot;number&amp;quot;typeof ture;  //">
-<meta property="og:updated_time" content="2017-02-14T16:47:44.497Z">
+<meta property="og:updated_time" content="2017-02-14T16:56:48.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量、值与类型(1)">
 <meta name="twitter:description" content="JS类型js有七种数据类型，Undefined、Null、Boolean、String、Number、Symbols、Object.function也是一种可引用的Object。判断数据类型一般可用typeof，12345678typeof NaN; //&amp;quot;number&amp;quot;typeof Infinity;  //&amp;quot;number&amp;quot;typeof ture;  //">
@@ -190,36 +190,31 @@
 <li>let-声明有块级作用域的变量，如for循环里的i</li>
 <li>const-声明一个只读的常量</li>
 </ul>
-<p>##var注意事项</p>
-<ul>
+<h2 id="var注意事项"><a href="#var注意事项" class="headerlink" title="var注意事项"></a>var注意事项</h2><ul>
 <li>无块级作用域</li>
 <li>变量提升<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">console.log(a); //undefined</div><div class="line">var a = 10;</div><div class="line">function foo()&#123;</div><div class="line">  console.log([a, i]);  //undefined,undefined  foo函数也提升了</div><div class="line">  var a = 20;</div><div class="line">  for(var i=0; i&lt;a; i++)&#123;</div><div class="line">    console.log(a);  //20</div><div class="line">    console.log(i); </div><div class="line">    //i重复20 i没有块级作用域，所以显示的是循环完成后的值，以前只能用       闭包或立即执行函数，现可用let可打印1-20的值</div><div class="line">  &#125;；</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>##let注意事项</p>
-<ul>
+<h2 id="let注意事项"><a href="#let注意事项" class="headerlink" title="let注意事项"></a>let注意事项</h2><ul>
 <li>块级作用域</li>
 <li>同一作用域只能声明一次，重复声明会报错</li>
 <li>暂存死区-变量不会提前，在声明前面引用会报错</li>
 <li>循环中的let作用域</li>
 <li>浏览器兼容问题</li>
 </ul>
-<p>##const注意事项</p>
-<ul>
+<h2 id="const注意事项"><a href="#const注意事项" class="headerlink" title="const注意事项"></a>const注意事项</h2><ul>
 <li>const声明变量的值不能再次改变</li>
 <li>其他和let一样</li>
 </ul>
-<p>##不声明使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(function foo()&#123;</div><div class="line">  var x = y = 10;  //等于var x=y; y=10;y没有声明是全局的</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">console.log([typeof x, typeof y]); //[&quot;undefined&quot;, &quot;number&quot;]</div></pre></td></tr></table></figure></p>
-<p>##相等</p>
-<p>==与===</p>
+<h2 id="不声明使用"><a href="#不声明使用" class="headerlink" title="不声明使用"></a>不声明使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(function foo()&#123;</div><div class="line">  var x = y = 10;  //等于var x=y; y=10;y没有声明是全局的</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">console.log([typeof x, typeof y]); //[&quot;undefined&quot;, &quot;number&quot;]</div></pre></td></tr></table></figure>
+<h2 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h2><p>==与===</p>
 <ul>
 <li>==为非严格相等，类型可以转换</li>
 <li>===为严格相等，类型不能转换</li>
 <li>NaN与任何值（包括自身）都不相等</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">null == undefined;  //ture</div><div class="line">null === undefined; //false</div><div class="line">console.log([1 == &quot;1&quot;, 0 == &quot;&quot;, 0 == [], 0 == false, 1 == true]); //都是ture</div></pre></td></tr></table></figure>
-<p>##Boolean</p>
-<ul>
+<h2 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h2><ul>
 <li>true和false</li>
 <li>0、、””、undefined、null隐形转化为false，其他为true。</li>
 <li>采用严格比较可以用!!将非boolean值转化为boolean值。</li>
@@ -228,8 +223,7 @@
 <li>比较操作返回boolean</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var result = 1 &amp;&amp; 2;</div><div class="line">console.log([result, !!result]);  //[2, true]</div><div class="line"></div><div class="line">function showTip(tip)&#123;</div><div class="line">  tip = tip || &quot;this is a tip&quot;  //利用||短路特性来设置参数默认值</div><div class="line">  //if(!tip)&#123;tip = &quot;this is a tip&quot;&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>##Number</p>
-<ul>
+<h2 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h2><ul>
 <li>数值范围<ul>
 <li>整数范围为-2^53~2^53</li>
 <li>小数范围为Number.EPSILON</li>
@@ -244,11 +238,9 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var num = 99; </div><div class="line">console.log(num.toFixed(2)); //99.00 </div><div class="line">console.log(num.toExponential(1)); //9.0e+1 </div><div class="line">console.log(num.toPrecision(1)); //9.0e+1 </div><div class="line">console.log(num.toPrecision(2)); //99 </div><div class="line">console.log(num.toPrecision(3)); //99.0</div></pre></td></tr></table></figure>
-<p>##String类型<br>引号规范和转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text = &apos;this is a text&apos;;  //规范建议用单引号，因为拼接字符串时属性里经常会用到双引号</div><div class="line">var html = &apos;&lt;p class=&quot;sth&quot;&gt;this is a &lt;em&gt;paragraph&lt;/em&gt;&lt;/p&gt;&apos;;</div><div class="line">var text2 = &apos;我的东西\n是全天下\n最好的&apos;;// \n是回车的转义，\t缩进</div></pre></td></tr></table></figure></p>
-<p>处理字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var str = &apos;my string&apos;;</div><div class="line">console.log(str.charAt(5));//&quot;r&quot;,数字从0开始，计算空格</div><div class="line">var charArray = Array.from(str);//同str.split(&apos;&apos;);把字符串分割为单个字的数组.</div><div class="line">console.log(charArray);//&#123;&quot;m&quot;, &quot;y&quot;, &quot;&quot;, &quot;s&quot;, &quot;t&quot;, &quot;r&quot;, &quot;i&quot;, &quot;n&quot;, &quot;g&quot;,&#125;;</div><div class="line">console.log(str.charAt(5),str.charCodeAt(6));//charCodeAt返回字符编码</div><div class="line">console.log(String.fromCharCode(charArray.map(...c=&gt;c.charCodeAt(0))))</div></pre></td></tr></table></figure>
-<p>字符串类型转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log([1+2, &apos;1&apos;+2, &apos;1&apos;-2]);//[3,&apos;12&apos;,-1] &apos;1&apos;+2被转换为字符串拼接了，如要得到3可写&apos;1&apos;-0+2,&apos;1&apos;-2被转换为数字了</div><div class="line">console.log(parseInt(&apos;100abc&apos;))//100字符串转数字，忽略abc</div></pre></td></tr></table></figure>
+<h2 id="String类型类型"><a href="#String类型类型" class="headerlink" title="String类型类型"></a>String类型类型</h2><p>引号规范和转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text = &apos;this is a text&apos;;  //规范建议用单引号，因为拼接字符串时属性里经常会用到双引号</div><div class="line">var html = &apos;&lt;p class=&quot;sth&quot;&gt;this is a &lt;em&gt;paragraph&lt;/em&gt;&lt;/p&gt;&apos;;</div><div class="line">var text2 = &apos;我的东西\n是全天下\n最好的&apos;;// \n是回车的转义，\t缩进</div></pre></td></tr></table></figure></p>
+<h2 id="处理字符"><a href="#处理字符" class="headerlink" title="处理字符"></a>处理字符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var str = &apos;my string&apos;;</div><div class="line">console.log(str.charAt(5));//&quot;r&quot;,数字从0开始，计算空格</div><div class="line">var charArray = Array.from(str);//同str.split(&apos;&apos;);把字符串分割为单个字的数组.</div><div class="line">console.log(charArray);//&#123;&quot;m&quot;, &quot;y&quot;, &quot;&quot;, &quot;s&quot;, &quot;t&quot;, &quot;r&quot;, &quot;i&quot;, &quot;n&quot;, &quot;g&quot;,&#125;;</div><div class="line">console.log(str.charAt(5),str.charCodeAt(6));//charCodeAt返回字符编码</div><div class="line">console.log(String.fromCharCode(charArray.map(...c=&gt;c.charCodeAt(0))))</div></pre></td></tr></table></figure>
+<h2 id="字符串类型转换"><a href="#字符串类型转换" class="headerlink" title="字符串类型转换"></a>字符串类型转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log([1+2, &apos;1&apos;+2, &apos;1&apos;-2]);//[3,&apos;12&apos;,-1] &apos;1&apos;+2被转换为字符串拼接了，如要得到3可写&apos;1&apos;-0+2,&apos;1&apos;-2被转换为数字了</div><div class="line">console.log(parseInt(&apos;100abc&apos;))//100字符串转数字，忽略abc</div></pre></td></tr></table></figure>
       
 
       
