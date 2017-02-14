@@ -161,76 +161,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-ES6新类型Symbol" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/14/ES6新类型Symbol/">ES6新类型Symbol</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/14/ES6新类型Symbol/" class="archive-article-date">
-  	<time datetime="2017-02-14T07:48:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>symbol为es6新加入的数据类型，symbol的作用是</p>
-<blockquote>
-<p>1.Symbol()–&gt;解决属性名的冲突,因为传入对象属性时,同样的Symbol不相等;<br>解释:什么是冲突呢？当多人合作编码的时候，经常会出现你往对象上加了一个某某属性（比如 $ ），他人正好也想到了这个名称，当你们同时用了这个名称作为属性，代码之间就会发生冲突，互相覆盖。而用 symbol，即使都用了相同的描述，也不是同一个 symbol。<br>2.Symbol.for()–&gt;共享Symbol,因为返回值得不一样,keyFor()用来查看它的描述</p>
-</blockquote>
-<p>symbol特点</p>
-<blockquote>
-<p>1.Symbol(‘key’) !== Symbol(‘key’)  //true,返回不同<br>2.Symbol(“know”).name = 1; // TypeError,只读<br>3.for…in 、 Object.keys(obj) 、Object.getOwnPropertyNames(obj)会忽略Symbol,即自身不可枚举<br>4.不能用obj.prop的形式访问</p>
-</blockquote>
-<p>symbol用法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// create a unique symbol  </div><div class="line">var isMoving = Symbol(&quot;isMoving&quot;);  </div><div class="line">...  </div><div class="line">if (element[isMoving]) &#123;  </div><div class="line">  smoothAnimations(element);  </div><div class="line">&#125;  </div><div class="line">element[isMoving] = true;</div></pre></td></tr></table></figure></p>
-<p>关于这段代码的几个说明：</p>
-<ul>
-<li>Symbol(“isMoving”)中的“isMoving”被称作描述。它对调试很有用。当你使用console.log()就可以打印出对应的symbol值，如果你想把它转换为字符串（比如说在打印错误信息的时候）可以使用.toString()。</li>
-<li>element[isMoving]被称作symbol-keyed属性（使用symbol作为键的属性）。从字面意思就可以说明它就是使用symbol作为属性名而不是使用字符串。除去这一点，它和其它属性并没什么区别。</li>
-<li>和数组元素一样，symbol-keyed属性不能通过圆点符号来获取值（obj.name 这样是不行的）。它的值必须通过方括号来获取。</li>
-<li>通过symbol的值获取symbol-keyed属性值就很容易了。上面的例子展示了如何获取和设置element[isMoving]，我们可以判断元素的isMoving状态了，如果有必要的话甚至可以删除isMoving状态。</li>
-<li>另一方面，以上的前提是isMoving在当前作用域中。这体现了symbols的弱封装机制：一个模块可以创建几个symbols在对象中任意使用而不用担心与其它模块的属性冲突。</li>
-</ul>
-<p>因为symbol键值是被设计来避免冲突的，所以JavaScript最基本的对象检测特性是会忽略symbol键值的。以for-in循环为例，循环只会遍历对象的字符串类型的键。Symbol键直接被忽略过了。Object.key(obj)和Object.getOwnPropertyNames(obj)也是这样运作的。但是sysmbols并不完全是私有的：可以使用新API——Object.getOwnPropertySymbols(obj)将所对象的所有symbol键；另一个新API—— Reflect.ownKeys(obj)，将会同时返回string和symbol类型的键。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/14/ES6新类型Symbol/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  <div class="duoshuo"></div>
-
-
-
-
-  
     <article id="post-变量、值与类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -244,7 +174,7 @@
 
         
         <a href="/2017/02/14/变量、值与类型/" class="archive-article-date">
-  	<time datetime="2017-02-14T06:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
+  	<time datetime="2017-02-14T10:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
 </a>
         
       </header>
@@ -332,6 +262,76 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/02/14/变量、值与类型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  <div class="duoshuo"></div>
+
+
+
+
+  
+    <article id="post-ES6新类型Symbol" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/14/ES6新类型Symbol/">ES6新类型Symbol</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/14/ES6新类型Symbol/" class="archive-article-date">
+  	<time datetime="2017-02-14T07:48:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>symbol为es6新加入的数据类型，symbol的作用是</p>
+<blockquote>
+<p>1.Symbol()–&gt;解决属性名的冲突,因为传入对象属性时,同样的Symbol不相等;<br>解释:什么是冲突呢？当多人合作编码的时候，经常会出现你往对象上加了一个某某属性（比如 $ ），他人正好也想到了这个名称，当你们同时用了这个名称作为属性，代码之间就会发生冲突，互相覆盖。而用 symbol，即使都用了相同的描述，也不是同一个 symbol。<br>2.Symbol.for()–&gt;共享Symbol,因为返回值得不一样,keyFor()用来查看它的描述</p>
+</blockquote>
+<p>symbol特点</p>
+<blockquote>
+<p>1.Symbol(‘key’) !== Symbol(‘key’)  //true,返回不同<br>2.Symbol(“know”).name = 1; // TypeError,只读<br>3.for…in 、 Object.keys(obj) 、Object.getOwnPropertyNames(obj)会忽略Symbol,即自身不可枚举<br>4.不能用obj.prop的形式访问</p>
+</blockquote>
+<p>symbol用法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// create a unique symbol  </div><div class="line">var isMoving = Symbol(&quot;isMoving&quot;);  </div><div class="line">...  </div><div class="line">if (element[isMoving]) &#123;  </div><div class="line">  smoothAnimations(element);  </div><div class="line">&#125;  </div><div class="line">element[isMoving] = true;</div></pre></td></tr></table></figure></p>
+<p>关于这段代码的几个说明：</p>
+<ul>
+<li>Symbol(“isMoving”)中的“isMoving”被称作描述。它对调试很有用。当你使用console.log()就可以打印出对应的symbol值，如果你想把它转换为字符串（比如说在打印错误信息的时候）可以使用.toString()。</li>
+<li>element[isMoving]被称作symbol-keyed属性（使用symbol作为键的属性）。从字面意思就可以说明它就是使用symbol作为属性名而不是使用字符串。除去这一点，它和其它属性并没什么区别。</li>
+<li>和数组元素一样，symbol-keyed属性不能通过圆点符号来获取值（obj.name 这样是不行的）。它的值必须通过方括号来获取。</li>
+<li>通过symbol的值获取symbol-keyed属性值就很容易了。上面的例子展示了如何获取和设置element[isMoving]，我们可以判断元素的isMoving状态了，如果有必要的话甚至可以删除isMoving状态。</li>
+<li>另一方面，以上的前提是isMoving在当前作用域中。这体现了symbols的弱封装机制：一个模块可以创建几个symbols在对象中任意使用而不用担心与其它模块的属性冲突。</li>
+</ul>
+<p>因为symbol键值是被设计来避免冲突的，所以JavaScript最基本的对象检测特性是会忽略symbol键值的。以for-in循环为例，循环只会遍历对象的字符串类型的键。Symbol键直接被忽略过了。Object.key(obj)和Object.getOwnPropertyNames(obj)也是这样运作的。但是sysmbols并不完全是私有的：可以使用新API——Object.getOwnPropertySymbols(obj)将所对象的所有symbol键；另一个新API—— Reflect.ownKeys(obj)，将会同时返回string和symbol类型的键。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/14/ES6新类型Symbol/">展开全文 >></a>
         </p>
       
 
