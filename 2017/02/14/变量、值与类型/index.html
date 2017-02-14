@@ -6,15 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://relax89757.github.io/blog">
-  <title>前端demo | 疯狂世界bolg</title>
+  <title>变量、值与类型(1) | 疯狂世界bolg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="前端demo">
-<meta property="og:url" content="https://relax89757.github.io/blog/2016/10/27/前端demo/index.html">
+  <meta name="description" content="JS类型js有七种数据类型，Undefined、Null、Boolean、String、Number、Symbols、Object.function也是一种可引用的Object。判断数据类型一般可用typeof，12345678typeof NaN; //&amp;quot;number&amp;quot;typeof Infinity;  //&amp;quot;number&amp;quot;typeof ture;  //">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变量、值与类型(1)">
+<meta property="og:url" content="https://relax89757.github.io/blog/2017/02/14/变量、值与类型/index.html">
 <meta property="og:site_name" content="疯狂世界bolg">
-<meta property="og:updated_time" content="2016-10-27T08:12:20.158Z">
+<meta property="og:description" content="JS类型js有七种数据类型，Undefined、Null、Boolean、String、Number、Symbols、Object.function也是一种可引用的Object。判断数据类型一般可用typeof，12345678typeof NaN; //&amp;quot;number&amp;quot;typeof Infinity;  //&amp;quot;number&amp;quot;typeof ture;  //">
+<meta property="og:updated_time" content="2017-02-14T16:47:44.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端demo">
+<meta name="twitter:title" content="变量、值与类型(1)">
+<meta name="twitter:description" content="JS类型js有七种数据类型，Undefined、Null、Boolean、String、Number、Symbols、Object.function也是一种可引用的Object。判断数据类型一般可用typeof，12345678typeof NaN; //&amp;quot;number&amp;quot;typeof Infinity;  //&amp;quot;number&amp;quot;typeof ture;  //">
   
     <link rel="alternative" href="/atom.xml" title="疯狂世界bolg" type="application/atom+xml">
   
@@ -160,27 +163,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-前端demo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-变量、值与类型" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      前端demo
+      变量、值与类型(1)
     </h1>
   
 
         
-        <a href="/blog/2016/10/27/前端demo/" class="archive-article-date">
-  	<time datetime="2016-10-27T08:12:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-27</time>
+        <a href="/blog/2017/02/14/变量、值与类型/" class="archive-article-date">
+  	<time datetime="2017-02-14T06:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="JS类型"><a href="#JS类型" class="headerlink" title="JS类型"></a>JS类型</h2><p>js有七种数据类型，Undefined、Null、Boolean、String、Number、Symbols、Object.<strong>function也是一种可引用的Object</strong>。<br>判断数据类型一般可用typeof，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">typeof NaN; //&quot;number&quot;</div><div class="line">typeof Infinity;  //&quot;number&quot;</div><div class="line">typeof ture;  //&quot;boolean&quot;</div><div class="line">typeof Null; //&quot;object&quot;</div><div class="line">typeof Undefined; //&quot;undefined&quot;</div><div class="line">typeof symbol();  //&quot;symbol&quot;</div><div class="line">typeof function()&#123;&#125;;  //&quot;function&quot;</div><div class="line">NaN == NaN  //false</div></pre></td></tr></table></figure></p>
+<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>js变量声明有3种方式：</p>
+<ul>
+<li>var-常用的声明变量，会变量提升</li>
+<li>let-声明有块级作用域的变量，如for循环里的i</li>
+<li>const-声明一个只读的常量</li>
+</ul>
+<p>##var注意事项</p>
+<ul>
+<li>无块级作用域</li>
+<li>变量提升<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">console.log(a); //undefined</div><div class="line">var a = 10;</div><div class="line">function foo()&#123;</div><div class="line">  console.log([a, i]);  //undefined,undefined  foo函数也提升了</div><div class="line">  var a = 20;</div><div class="line">  for(var i=0; i&lt;a; i++)&#123;</div><div class="line">    console.log(a);  //20</div><div class="line">    console.log(i); </div><div class="line">    //i重复20 i没有块级作用域，所以显示的是循环完成后的值，以前只能用       闭包或立即执行函数，现可用let可打印1-20的值</div><div class="line">  &#125;；</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##let注意事项</p>
+<ul>
+<li>块级作用域</li>
+<li>同一作用域只能声明一次，重复声明会报错</li>
+<li>暂存死区-变量不会提前，在声明前面引用会报错</li>
+<li>循环中的let作用域</li>
+<li>浏览器兼容问题</li>
+</ul>
+<p>##const注意事项</p>
+<ul>
+<li>const声明变量的值不能再次改变</li>
+<li>其他和let一样</li>
+</ul>
+<p>##不声明使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(function foo()&#123;</div><div class="line">  var x = y = 10;  //等于var x=y; y=10;y没有声明是全局的</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">console.log([typeof x, typeof y]); //[&quot;undefined&quot;, &quot;number&quot;]</div></pre></td></tr></table></figure></p>
+<p>##相等</p>
+<p>==与===</p>
+<ul>
+<li>==为非严格相等，类型可以转换</li>
+<li>===为严格相等，类型不能转换</li>
+<li>NaN与任何值（包括自身）都不相等</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">null == undefined;  //ture</div><div class="line">null === undefined; //false</div><div class="line">console.log([1 == &quot;1&quot;, 0 == &quot;&quot;, 0 == [], 0 == false, 1 == true]); //都是ture</div></pre></td></tr></table></figure>
+<p>##Boolean</p>
+<ul>
+<li>true和false</li>
+<li>0、、””、undefined、null隐形转化为false，其他为true。</li>
+<li>采用严格比较可以用!!将非boolean值转化为boolean值。</li>
+<li>布尔操作符&amp;&amp;和||不会改变数据类型。</li>
+<li>&amp;&amp;和||的短路特性,&amp;&amp;中第一个表达式为假就不会去处理第二个表达式，而||正好相反。 &amp;&amp;两个表达式为true，取第二个表达式值，||取第一个表达式值</li>
+<li>比较操作返回boolean</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var result = 1 &amp;&amp; 2;</div><div class="line">console.log([result, !!result]);  //[2, true]</div><div class="line"></div><div class="line">function showTip(tip)&#123;</div><div class="line">  tip = tip || &quot;this is a tip&quot;  //利用||短路特性来设置参数默认值</div><div class="line">  //if(!tip)&#123;tip = &quot;this is a tip&quot;&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##Number</p>
+<ul>
+<li>数值范围<ul>
+<li>整数范围为-2^53~2^53</li>
+<li>小数范围为Number.EPSILON</li>
+<li>infinity（无穷大）、Number.MAX_VALUE、Number.MIN_VALUE</li>
+<li>浮点数精度问题（0.1+0.2 != 0.3）<ul>
+<li>toFixed() 方法指定小数位个数</li>
+<li>toExponential() 方法 用科学计数法表示数，参数指定小数位个数</li>
+<li>toPrecision()方法自动判断调用toFixed()或toExponential()方法,参        数指定所有数的位数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var num = 99; </div><div class="line">console.log(num.toFixed(2)); //99.00 </div><div class="line">console.log(num.toExponential(1)); //9.0e+1 </div><div class="line">console.log(num.toPrecision(1)); //9.0e+1 </div><div class="line">console.log(num.toPrecision(2)); //99 </div><div class="line">console.log(num.toPrecision(3)); //99.0</div></pre></td></tr></table></figure>
+<p>##String类型<br>引号规范和转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text = &apos;this is a text&apos;;  //规范建议用单引号，因为拼接字符串时属性里经常会用到双引号</div><div class="line">var html = &apos;&lt;p class=&quot;sth&quot;&gt;this is a &lt;em&gt;paragraph&lt;/em&gt;&lt;/p&gt;&apos;;</div><div class="line">var text2 = &apos;我的东西\n是全天下\n最好的&apos;;// \n是回车的转义，\t缩进</div></pre></td></tr></table></figure></p>
+<p>处理字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var str = &apos;my string&apos;;</div><div class="line">console.log(str.charAt(5));//&quot;r&quot;,数字从0开始，计算空格</div><div class="line">var charArray = Array.from(str);//同str.split(&apos;&apos;);把字符串分割为单个字的数组.</div><div class="line">console.log(charArray);//&#123;&quot;m&quot;, &quot;y&quot;, &quot;&quot;, &quot;s&quot;, &quot;t&quot;, &quot;r&quot;, &quot;i&quot;, &quot;n&quot;, &quot;g&quot;,&#125;;</div><div class="line">console.log(str.charAt(5),str.charCodeAt(6));//charCodeAt返回字符编码</div><div class="line">console.log(String.fromCharCode(charArray.map(...c=&gt;c.charCodeAt(0))))</div></pre></td></tr></table></figure>
+<p>字符串类型转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log([1+2, &apos;1&apos;+2, &apos;1&apos;-2]);//[3,&apos;12&apos;,-1] &apos;1&apos;+2被转换为字符串拼接了，如要得到3可写&apos;1&apos;-0+2,&apos;1&apos;-2被转换为数字了</div><div class="line">console.log(parseInt(&apos;100abc&apos;))//100字符串转数字，忽略abc</div></pre></td></tr></table></figure>
       
 
       
@@ -214,6 +282,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list">
+			 
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color3">前端</a>
+        </li>
+      
+		</ul>
+	</div>
+
       
 
       
@@ -264,7 +343,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://relax89757.github.io/blog/2016/10/27/前端demo/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://relax89757.github.io/blog/2017/02/14/变量、值与类型/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -278,15 +357,20 @@
   
 <nav id="article-nav">
   
-    <a href="/blog/2016/10/27/北高峰图记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2017/02/14/ES6新类型Symbol/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          北高峰图记
+          ES6新类型Symbol
         
       </div>
     </a>
   
+  
+    <a href="/blog/2016/10/27/绝对定位居中布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">绝对定位居中布局</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -297,7 +381,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="前端demo" data-title="前端demo" data-url="https://relax89757.github.io/blog/blog/2016/10/27/前端demo/"></div>
+	<div class="ds-thread" data-thread-key="变量、值与类型" data-title="变量、值与类型(1)" data-url="https://relax89757.github.io/blog/blog/2017/02/14/变量、值与类型/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

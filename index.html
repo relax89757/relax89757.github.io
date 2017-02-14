@@ -161,27 +161,45 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Ajax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ES6新类型Symbol" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/04/Ajax/">Ajax</a>
+      <a class="article-title" href="/blog/2017/02/14/ES6新类型Symbol/">ES6新类型Symbol</a>
     </h1>
   
 
         
-        <a href="/blog/2017/01/04/Ajax/" class="archive-article-date">
-  	<time datetime="2017-01-04T09:43:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-04</time>
+        <a href="/blog/2017/02/14/ES6新类型Symbol/" class="archive-article-date">
+  	<time datetime="2017-02-14T07:48:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>symbol为es6新加入的数据类型，symbol的作用是</p>
+<blockquote>
+<p>1.Symbol()–&gt;解决属性名的冲突,因为传入对象属性时,同样的Symbol不相等;<br>解释:什么是冲突呢？当多人合作编码的时候，经常会出现你往对象上加了一个某某属性（比如 $ ），他人正好也想到了这个名称，当你们同时用了这个名称作为属性，代码之间就会发生冲突，互相覆盖。而用 symbol，即使都用了相同的描述，也不是同一个 symbol。<br>2.Symbol.for()–&gt;共享Symbol,因为返回值得不一样,keyFor()用来查看它的描述</p>
+</blockquote>
+<p>symbol特点</p>
+<blockquote>
+<p>1.Symbol(‘key’) !== Symbol(‘key’)  //true,返回不同<br>2.Symbol(“know”).name = 1; // TypeError,只读<br>3.for…in 、 Object.keys(obj) 、Object.getOwnPropertyNames(obj)会忽略Symbol,即自身不可枚举<br>4.不能用obj.prop的形式访问</p>
+</blockquote>
+<p>symbol用法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// create a unique symbol  </div><div class="line">var isMoving = Symbol(&quot;isMoving&quot;);  </div><div class="line">...  </div><div class="line">if (element[isMoving]) &#123;  </div><div class="line">  smoothAnimations(element);  </div><div class="line">&#125;  </div><div class="line">element[isMoving] = true;</div></pre></td></tr></table></figure></p>
+<p>关于这段代码的几个说明：</p>
+<ul>
+<li>Symbol(“isMoving”)中的“isMoving”被称作描述。它对调试很有用。当你使用console.log()就可以打印出对应的symbol值，如果你想把它转换为字符串（比如说在打印错误信息的时候）可以使用.toString()。</li>
+<li>element[isMoving]被称作symbol-keyed属性（使用symbol作为键的属性）。从字面意思就可以说明它就是使用symbol作为属性名而不是使用字符串。除去这一点，它和其它属性并没什么区别。</li>
+<li>和数组元素一样，symbol-keyed属性不能通过圆点符号来获取值（obj.name 这样是不行的）。它的值必须通过方括号来获取。</li>
+<li>通过symbol的值获取symbol-keyed属性值就很容易了。上面的例子展示了如何获取和设置element[isMoving]，我们可以判断元素的isMoving状态了，如果有必要的话甚至可以删除isMoving状态。</li>
+<li>另一方面，以上的前提是isMoving在当前作用域中。这体现了symbols的弱封装机制：一个模块可以创建几个symbols在对象中任意使用而不用担心与其它模块的属性冲突。</li>
+</ul>
+<p>因为symbol键值是被设计来避免冲突的，所以JavaScript最基本的对象检测特性是会忽略symbol键值的。以for-in循环为例，循环只会遍历对象的字符串类型的键。Symbol键直接被忽略过了。Object.key(obj)和Object.getOwnPropertyNames(obj)也是这样运作的。但是sysmbols并不完全是私有的：可以使用新API——Object.getOwnPropertySymbols(obj)将所对象的所有symbol键；另一个新API—— Reflect.ownKeys(obj)，将会同时返回string和symbol类型的键。</p>
+
       
 
       
@@ -193,7 +211,135 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/04/Ajax/">展开全文 >></a>
+          <a class="article-more-a" href="/blog/2017/02/14/ES6新类型Symbol/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  <div class="duoshuo"></div>
+
+
+
+
+  
+    <article id="post-变量、值与类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/14/变量、值与类型/">变量、值与类型(1)</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/14/变量、值与类型/" class="archive-article-date">
+  	<time datetime="2017-02-14T06:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JS类型"><a href="#JS类型" class="headerlink" title="JS类型"></a>JS类型</h2><p>js有七种数据类型，Undefined、Null、Boolean、String、Number、Symbols、Object.<strong>function也是一种可引用的Object</strong>。<br>判断数据类型一般可用typeof，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">typeof NaN; //&quot;number&quot;</div><div class="line">typeof Infinity;  //&quot;number&quot;</div><div class="line">typeof ture;  //&quot;boolean&quot;</div><div class="line">typeof Null; //&quot;object&quot;</div><div class="line">typeof Undefined; //&quot;undefined&quot;</div><div class="line">typeof symbol();  //&quot;symbol&quot;</div><div class="line">typeof function()&#123;&#125;;  //&quot;function&quot;</div><div class="line">NaN == NaN  //false</div></pre></td></tr></table></figure></p>
+<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>js变量声明有3种方式：</p>
+<ul>
+<li>var-常用的声明变量，会变量提升</li>
+<li>let-声明有块级作用域的变量，如for循环里的i</li>
+<li>const-声明一个只读的常量</li>
+</ul>
+<p>##var注意事项</p>
+<ul>
+<li>无块级作用域</li>
+<li>变量提升<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">console.log(a); //undefined</div><div class="line">var a = 10;</div><div class="line">function foo()&#123;</div><div class="line">  console.log([a, i]);  //undefined,undefined  foo函数也提升了</div><div class="line">  var a = 20;</div><div class="line">  for(var i=0; i&lt;a; i++)&#123;</div><div class="line">    console.log(a);  //20</div><div class="line">    console.log(i); </div><div class="line">    //i重复20 i没有块级作用域，所以显示的是循环完成后的值，以前只能用       闭包或立即执行函数，现可用let可打印1-20的值</div><div class="line">  &#125;；</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##let注意事项</p>
+<ul>
+<li>块级作用域</li>
+<li>同一作用域只能声明一次，重复声明会报错</li>
+<li>暂存死区-变量不会提前，在声明前面引用会报错</li>
+<li>循环中的let作用域</li>
+<li>浏览器兼容问题</li>
+</ul>
+<p>##const注意事项</p>
+<ul>
+<li>const声明变量的值不能再次改变</li>
+<li>其他和let一样</li>
+</ul>
+<p>##不声明使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(function foo()&#123;</div><div class="line">  var x = y = 10;  //等于var x=y; y=10;y没有声明是全局的</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">console.log([typeof x, typeof y]); //[&quot;undefined&quot;, &quot;number&quot;]</div></pre></td></tr></table></figure></p>
+<p>##相等</p>
+<p>==与===</p>
+<ul>
+<li>==为非严格相等，类型可以转换</li>
+<li>===为严格相等，类型不能转换</li>
+<li>NaN与任何值（包括自身）都不相等</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">null == undefined;  //ture</div><div class="line">null === undefined; //false</div><div class="line">console.log([1 == &quot;1&quot;, 0 == &quot;&quot;, 0 == [], 0 == false, 1 == true]); //都是ture</div></pre></td></tr></table></figure>
+<p>##Boolean</p>
+<ul>
+<li>true和false</li>
+<li>0、、””、undefined、null隐形转化为false，其他为true。</li>
+<li>采用严格比较可以用!!将非boolean值转化为boolean值。</li>
+<li>布尔操作符&amp;&amp;和||不会改变数据类型。</li>
+<li>&amp;&amp;和||的短路特性,&amp;&amp;中第一个表达式为假就不会去处理第二个表达式，而||正好相反。 &amp;&amp;两个表达式为true，取第二个表达式值，||取第一个表达式值</li>
+<li>比较操作返回boolean</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var result = 1 &amp;&amp; 2;</div><div class="line">console.log([result, !!result]);  //[2, true]</div><div class="line"></div><div class="line">function showTip(tip)&#123;</div><div class="line">  tip = tip || &quot;this is a tip&quot;  //利用||短路特性来设置参数默认值</div><div class="line">  //if(!tip)&#123;tip = &quot;this is a tip&quot;&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##Number</p>
+<ul>
+<li>数值范围<ul>
+<li>整数范围为-2^53~2^53</li>
+<li>小数范围为Number.EPSILON</li>
+<li>infinity（无穷大）、Number.MAX_VALUE、Number.MIN_VALUE</li>
+<li>浮点数精度问题（0.1+0.2 != 0.3）<ul>
+<li>toFixed() 方法指定小数位个数</li>
+<li>toExponential() 方法 用科学计数法表示数，参数指定小数位个数</li>
+<li>toPrecision()方法自动判断调用toFixed()或toExponential()方法,参        数指定所有数的位数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var num = 99; </div><div class="line">console.log(num.toFixed(2)); //99.00 </div><div class="line">console.log(num.toExponential(1)); //9.0e+1 </div><div class="line">console.log(num.toPrecision(1)); //9.0e+1 </div><div class="line">console.log(num.toPrecision(2)); //99 </div><div class="line">console.log(num.toPrecision(3)); //99.0</div></pre></td></tr></table></figure>
+<p>##String类型<br>引号规范和转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text = &apos;this is a text&apos;;  //规范建议用单引号，因为拼接字符串时属性里经常会用到双引号</div><div class="line">var html = &apos;&lt;p class=&quot;sth&quot;&gt;this is a &lt;em&gt;paragraph&lt;/em&gt;&lt;/p&gt;&apos;;</div><div class="line">var text2 = &apos;我的东西\n是全天下\n最好的&apos;;// \n是回车的转义，\t缩进</div></pre></td></tr></table></figure></p>
+<p>处理字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var str = &apos;my string&apos;;</div><div class="line">console.log(str.charAt(5));//&quot;r&quot;,数字从0开始，计算空格</div><div class="line">var charArray = Array.from(str);//同str.split(&apos;&apos;);把字符串分割为单个字的数组.</div><div class="line">console.log(charArray);//&#123;&quot;m&quot;, &quot;y&quot;, &quot;&quot;, &quot;s&quot;, &quot;t&quot;, &quot;r&quot;, &quot;i&quot;, &quot;n&quot;, &quot;g&quot;,&#125;;</div><div class="line">console.log(str.charAt(5),str.charCodeAt(6));//charCodeAt返回字符编码</div><div class="line">console.log(String.fromCharCode(charArray.map(...c=&gt;c.charCodeAt(0))))</div></pre></td></tr></table></figure>
+<p>字符串类型转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log([1+2, &apos;1&apos;+2, &apos;1&apos;-2]);//[3,&apos;12&apos;,-1] &apos;1&apos;+2被转换为字符串拼接了，如要得到3可写&apos;1&apos;-0+2,&apos;1&apos;-2被转换为数字了</div><div class="line">console.log(parseInt(&apos;100abc&apos;))//100字符串转数字，忽略abc</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list">
+			 
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color3">前端</a>
+        </li>
+      
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/14/变量、值与类型/">展开全文 >></a>
         </p>
       
 
@@ -499,11 +645,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color4">css</a>
+                <a href="javascript:void(0)" class="color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color3">旧事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color4">css</a>
               </li>
             
             <div class="clearfix"></div>
