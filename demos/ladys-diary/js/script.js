@@ -23,7 +23,10 @@ window.onload=function(){
             var newLeft=parseInt(slideshow.style.left)+offset;
             slideshow.style.left=newLeft+'rem';
 
-            if(newLeft<-206){ slideshow.style.left="-14+'rem';" }="" if(newleft="">-14){
+            if(newLeft<-206){
+                slideshow.style.left=-14+'rem';
+            }
+            if(newLeft>-14){
                 slideshow.style.left=-206+'rem';
             }
         }
@@ -117,4 +120,3 @@ window.onload=function(){
 
            
 }   
-</-206){>
